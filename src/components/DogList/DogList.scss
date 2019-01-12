@@ -1,0 +1,63 @@
+.DogsList {
+
+  &__container {
+    border: 1px solid #e1e1e1;
+    background-color: #fff;
+
+    &--sub {
+      border: none;
+      display: none;
+      background-color: #ececec;
+    }
+
+    &--opened {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__link {
+    display: flex;
+    padding: 5px 8px;
+    border-bottom: 1px solid #e1e1e1;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+
+    &:hover {
+      background-color: #d6d6d6;
+    }
+  }
+  &__toggle-btn {
+    position: relative;
+    width: 100%;
+    display: flex;
+    padding: 5px 8px;
+    border: none;
+    border-bottom: 1px solid #e1e1e1;
+    background-color: transparent;
+    text-transform: capitalize;
+    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+
+    &:after {
+      content: '+';
+      position: absolute;
+      right: 5px;
+      top: 5px;
+    }
+
+    &--opened {
+      &:after {
+        content: '-';
+      }
+    }
+
+    &:hover {
+      background-color: #d6d6d6;
+    }
+  }
+}

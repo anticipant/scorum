@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { getBreedsList, getBreedURL } from '../actions/ListActions';
+import DogsList from './DogList/DogList';
 
-// const BreedsList = ({ breeds }) => (
-//   <div>
-//     <div>Hello Dogs</div>
-//     {breeds.breedsList}
-//   </div>
+// const ListLink = ({ breeds }) => (
+//   <ul className="ListLink">
+//     <li></li>
+//   </ul>
 // );
 
 class BreedsList extends React.Component {
@@ -19,18 +19,19 @@ class BreedsList extends React.Component {
   }
 
   onBreedNameClick = (evt) => {
-    const { getBreedURLActions } = this.props;
-    const breedName = evt.target.innerHTML;
-    if (breedName.split(' ').length === 1) {
-      // link на роутер для конкретной породы
-      console.log('Breed');
-    } else {
-      console.log('subBreed');
-
-      // link на роутер для конкретной породы
-    }
-
-    getBreedURLActions(breedName);
+    console.log('click');
+    // const { getBreedURLActions } = this.props;
+    // const breedName = evt.target.innerHTML;
+    // if (breedName.split(' ').length === 1) {
+    //   // link на роутер для конкретной породы
+    //   console.log('Breed');
+    // } else {
+    //   console.log('subBreed');
+    //
+    //   // link на роутер для конкретной породы
+    // }
+    //
+    // getBreedURLActions(breedName);
 
     // в сторе надо добавить свойство с именем выбранной породы
   };
@@ -38,26 +39,14 @@ class BreedsList extends React.Component {
   render() {
     const { breedsList } = this.props;
 
-    if (breedsList.referrer) return <Redirect to={`/dog${breedsList.referrer}`} />;
+    // if (breedsList.referrer) return <Redirect to={`/dog${breedsList.referrer}`} />;
 
     return (
       <div>
         <div>Hello Dogs:</div>
         <hr />
         <div role="presentation" className="wrapper" onClick={this.onBreedNameClick}>
-          {breedsList.breeds.map((it) => {
-            const breedTitle = Object.keys(it);
-            if (it[breedTitle].length) {
-              return it[breedTitle].map(subBreed => (
-                <p key={`${subBreed} ${breedTitle}`}>
-                  {`${subBreed} ${breedTitle}`}
-                </p>
-              ));
-            }
-            return (
-              <p key={breedTitle}>{breedTitle}</p>
-            );
-          })}
+          <DogsList breedsList={breedsList} />
         </div>
 
         {breedsList.isFetching ? 'Loading...' : null}

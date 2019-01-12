@@ -9,8 +9,7 @@ const App = () => (
       <React.Fragment>
 
         <Route exact path="/" component={BreedsList} />
-        <Route path="/dog/:breed/:subBreed" component={BreedPage} />
-        {/* <Route path="/table-results" component={Results} /> */}
+        <Route path="/dog/:breed/:subBreed?" component={BreedPage} />
 
       </React.Fragment>
     </Router>
