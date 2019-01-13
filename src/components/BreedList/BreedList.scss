@@ -1,0 +1,12 @@
+.BreedList {
+
+  &__container {
+    display: flex;
+  }
+
+  &__title {
+    padding: 20px;
+    text-align: center;
+    font-size: 25px;
+  }
+}

@@ -1,12 +1,9 @@
-import {
-  BREEDS_LIST_REQUEST, BREEDS_LIST_SUCCESS, BREEDS_LIST_FAIL, REDIRECT_TO_DOG_PAGE,
-} from '../actions/ListActions';
+import { BREEDS_LIST_REQUEST, BREEDS_LIST_SUCCESS, BREEDS_LIST_FAIL } from '../actions/ListActions';
 
 const initialState = {
   breeds: [],
   error: '',
   isFetching: false,
-  referrer: null,
 };
 
 const listReducer = (state = initialState, action) => {
@@ -19,12 +16,6 @@ const listReducer = (state = initialState, action) => {
 
     case BREEDS_LIST_FAIL:
       return { ...state, isFetching: false, error: action.payload.message };
-
-    case REDIRECT_TO_DOG_PAGE:
-      return {
-        ...state,
-        referrer: action.payload,
-      };
 
     default:
       return state;

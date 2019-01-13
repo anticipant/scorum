@@ -1,6 +1,10 @@
 .DogsList {
 
+
+
   &__container {
+    display: inline-block;
+    min-width: 200px;
     border: 1px solid #e1e1e1;
     background-color: #fff;
 
