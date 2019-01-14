@@ -3,7 +3,7 @@ export const BREED_IMAGE_SUCCESS = 'BREED_IMAGE_SUCCESS';
 export const BREED_IMAGE_FAIL = 'BREED_IMAGE_FAIL';
 export const INCREASE_SHOWED_IMAGES = 'INCREASE_SHOWED_IMAGES';
 
-const NUMBER_OF_PICTURES = 2;
+const NUMBER_OF_PICTURES = 4;
 
 export const getBreedInfo = dogInfo => (dispatch) => {
   dispatch({
@@ -27,7 +27,7 @@ export const getBreedInfo = dogInfo => (dispatch) => {
     return `https://dog.ceo/api/breed/${fullBreedPath}images`;
   };
 
-  const dogImagesURL = getURLForImages(dogInfo, 10);
+  const dogImagesURL = getURLForImages(dogInfo, 20);
 
   fetch(dogImagesURL)
     .then(response => response.json())

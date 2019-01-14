@@ -11,7 +11,7 @@ const initialState = {
   breed: null,
   subBreed: null,
   allImagesOfTheBreed: [],
-  showedImages: 2,
+  showedImages: 4,
 };
 
 const pageReducer = (state = initialState, action) => {

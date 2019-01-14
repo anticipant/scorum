@@ -1,0 +1,48 @@
+.BreedPage {
+  width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0 40px;
+  }
+
+  &__title {
+    padding: 20px 0;
+    font-size: 25px;
+  }
+
+  &__breed-name {
+    margin: 10px 0;
+    font-size: 22px;
+    text-transform: capitalize;
+  }
+
+  &__image {
+    display: block;
+    width: 290px;
+    height: 290px;
+    margin: 10px 10px 0 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__button {
+    padding: .625rem 1rem;
+    background-color: transparent;
+    border-radius: .25rem;
+    border-color: #121526;
+    font-size: .875rem;
+    line-height: 1.43;
+    color: #121526;
+  }
+
+  &__button-wrapper {
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+  }
+}

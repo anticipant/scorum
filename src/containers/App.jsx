@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import BreedsList from '../components/BreedList/BreedsList';
-import BreedPage from '../components/BreedPage';
+import BreedPage from '../components/BreedPage/BreedPage';
 
 const App = () => (
   <div className="app">
