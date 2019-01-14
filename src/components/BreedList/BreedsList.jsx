@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getBreedsList } from '../../actions/ListActions';
 import DogsList from '../DogList/DogList';
+import BreedImage from '../BreedImage/BreedImage';
 import Preloader from '../Preloader/Preloader';
 import './BreedList.scss';
 import checkImgArrAndGo from '../../help/util';
@@ -11,6 +12,7 @@ import checkImgArrAndGo from '../../help/util';
 class BreedsList extends React.Component {
   componentDidMount() {
     const { getBreedsListActions } = this.props;
+
     getBreedsListActions();
   }
 
@@ -20,8 +22,9 @@ class BreedsList extends React.Component {
 
     if (!isFetchingListImages || !isFetchingList) {
       setTimeout(() => {
-        checkImgArrAndGo();
+        checkImgArrAndGo('BreedList__content-wrapper', 'BreedList__flex-image');
       }, 1000);
+
       setTimeout(() => {
         this.showBreedListContainer();
       }, 1300);
@@ -49,13 +52,12 @@ class BreedsList extends React.Component {
         <Preloader isFetching={isFetchingListImages || isFetchingList}>
           <div className="BreedList__container">
             <DogsList breedsList={breedsList} />
+
             <div className="BreedList__content-wrapper">
-              {breedsList.breedsImages.map((it) => {
-                const { id, url } = it;
-                return (<img className="BreedList__flex-image" key={id} src={url} alt="" />);
-              })}
+              {breedsList.breedsImages.map(it => <BreedImage key={it.id} imageInfo={it} name="BreedList__flex-image" />)}
 
             </div>
+
           </div>
         </Preloader>
       </div>

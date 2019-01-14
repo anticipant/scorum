@@ -32,9 +32,9 @@ const callCycle = (number, arr, blockWidth) => {
   }
 };
 
-const checkImgArrAndGo = () => {
-  const images = document.querySelectorAll('.BreedList__flex-image');
-  const pickupWrapper = document.querySelector('.BreedList__content-wrapper');
+const checkImgArrAndGo = (container, element) => {
+  const pickupWrapper = document.querySelector(`.${container}`);
+  const images = document.querySelectorAll(`.${element}`);
 
   if (!images || !pickupWrapper) {
     return;
