@@ -54,7 +54,6 @@ DogsList.propTypes = {
   breedsList: PropTypes.shape({
     breeds: PropTypes.array.isRequired,
     error: PropTypes.string.isRequired,
-    isFetching: PropTypes.bool.isRequired,
   }).isRequired,
 };
 

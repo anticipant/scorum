@@ -5,28 +5,59 @@ import { getBreedsList } from '../../actions/ListActions';
 import DogsList from '../DogList/DogList';
 import Preloader from '../Preloader/Preloader';
 import './BreedList.scss';
+import checkImgArrAndGo from '../../help/util';
+
 
 class BreedsList extends React.Component {
   componentDidMount() {
     const { getBreedsListActions } = this.props;
-
     getBreedsListActions();
   }
 
+  componentDidUpdate() {
+    const { breedsList } = this.props;
+    const { isFetchingListImages, isFetchingList } = breedsList;
+
+    if (!isFetchingListImages || !isFetchingList) {
+      setTimeout(() => {
+        checkImgArrAndGo();
+      }, 1000);
+      setTimeout(() => {
+        this.showBreedListContainer();
+      }, 1300);
+    }
+  }
+
+  showBreedListContainer = () => {
+    const container = document.querySelector('.BreedList__content-wrapper');
+
+    if (container) {
+      container.classList.add('BreedList__content-wrapper--visible');
+    }
+  };
+
   render() {
     const { breedsList } = this.props;
+    const { isFetchingListImages, isFetchingList } = breedsList;
 
 
     return (
       <div className="BreedList">
         <h1 className="BreedList__title">Choose your Dog!</h1>
-        <div className="BreedList__container">
 
-          <Preloader isFetching={breedsList.isFetching}>
+
+        <Preloader isFetching={isFetchingListImages || isFetchingList}>
+          <div className="BreedList__container">
             <DogsList breedsList={breedsList} />
-          </Preloader>
+            <div className="BreedList__content-wrapper">
+              {breedsList.breedsImages.map((it) => {
+                const { id, url } = it;
+                return (<img className="BreedList__flex-image" key={id} src={url} alt="" />);
+              })}
 
-        </div>
+            </div>
+          </div>
+        </Preloader>
       </div>
     );
   }
@@ -36,7 +67,8 @@ BreedsList.propTypes = {
   breedsList: PropTypes.shape({
     breeds: PropTypes.array.isRequired,
     error: PropTypes.string.isRequired,
-    isFetching: PropTypes.bool.isRequired,
+    isFetchingList: PropTypes.bool.isRequired,
+    isFetchingListImages: PropTypes.bool.isRequired,
   }).isRequired,
   getBreedsListActions: PropTypes.func.isRequired,
 };

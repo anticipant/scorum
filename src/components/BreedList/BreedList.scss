@@ -1,12 +1,38 @@
 .BreedList {
+  width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
 
   &__container {
     display: flex;
   }
 
   &__title {
-    padding: 20px;
-    text-align: center;
+    padding: 20px 0;
     font-size: 25px;
+  }
+
+  &__content-wrapper {
+    margin: 0 20px 10px;
+    align-self: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    &--visible {
+      visibility: visible;
+      opacity: 1;
+      transition: 1.5s;
+    }
+  }
+  &__flex-image {
+    margin: 0 0 10px 10px;
+
+    &:nth-of-type(odd) {
+    margin: 0 0 10px;
+  }
   }
 }

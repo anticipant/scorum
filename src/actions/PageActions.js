@@ -34,7 +34,7 @@ export const getBreedInfo = dogInfo => (dispatch) => {
     .then((data) => {
       if (data.status === 'success') {
         const breedImages = data.message.map(it => ({
-          id: it.slice(it.lastIndexOf('_'), it.lastIndexOf('.') + 1),
+          id: it.slice(it.lastIndexOf('_') + 1, it.lastIndexOf('.')),
           url: it,
         }));
 
