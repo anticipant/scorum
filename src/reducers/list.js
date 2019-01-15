@@ -20,23 +20,46 @@ const listReducer = (state = initialState, action) => {
   switch (action.type) {
     case BREEDS_LIST_REQUEST:
       return {
-        ...state, isFetchingList: true, isFetchingListImages: true, error: '', areImagesShowing: false,
+        ...state,
+        isFetchingList: true,
+        isFetchingListImages: true,
+        error: '',
+        areImagesShowing: false,
       };
 
     case BREEDS_LIST_SUCCESS:
-      return { ...state, isFetchingList: false, breeds: action.payload };
+      return {
+        ...state,
+        isFetchingList: false,
+        breeds: action.payload,
+      };
 
     case BREEDS_LIST_FAIL:
-      return { ...state, isFetchingList: false, error: action.payload.message };
+      return {
+        ...state,
+        isFetchingList: false,
+        error: action.payload.message,
+      };
 
     case BREEDS_LIST_IMAGES_SUCCESS:
-      return { ...state, isFetchingListImages: false, breedsImages: action.payload };
+      return {
+        ...state,
+        isFetchingListImages: false,
+        breedsImages: action.payload,
+      };
 
     case BREEDS_LIST_IMAGES_FAIL:
-      return { ...state, isFetchingListImages: false, error: action.payload.message };
+      return {
+        ...state,
+        isFetchingListImages: false,
+        error: action.payload.message,
+      };
 
     case IMAGE_RENDERED:
-      return { ...state, areImagesShowing: true };
+      return {
+        ...state,
+        areImagesShowing: true,
+      };
 
     default:
       return state;
