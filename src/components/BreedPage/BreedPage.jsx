@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getBreedInfo, increaseShowedImages } from '../../actions/PageActions';
 import './BreedPage.scss';
 import Preloader from '../Preloader/Preloader';
+import HomeAnchor from '../HomeAnchor/HomeAnchor';
 
 const GetBreedFullName = ({ breed, subBreed }) => {
   if (breed && subBreed) {
@@ -71,18 +72,21 @@ class BreedPage extends React.Component {
     const { breed, subBreed = '' } = match.params;
 
     return (
-      <div className="BreedPage">
+      <React.Fragment>
+        <div className="BreedPage">
+          {/* сделать компонент для навигации с возможностью масштабируемости */}
+          <HomeAnchor />
+          <h1 className="BreedPage__title">The dog is the best friend</h1>
+          <GetBreedFullName subBreed={subBreed} breed={breed} />
 
-        <h1 className="BreedPage__title">The dog is the best friend</h1>
-        <GetBreedFullName subBreed={subBreed} breed={breed} />
+          <div className="BreedPage__container">
+            <Preloader isFetching={breedPage.isFetching}>
+              {this.getImageElements(breedPage.allImagesOfTheBreed, breedPage.showedImages)}
+            </Preloader>
+          </div>
 
-        <div className="BreedPage__container">
-          <Preloader isFetching={breedPage.isFetching}>
-            {this.getImageElements(breedPage.allImagesOfTheBreed, breedPage.showedImages)}
-          </Preloader>
         </div>
-
-      </div>
+      </React.Fragment>
     );
   }
 }
@@ -96,8 +100,7 @@ BreedPage.propTypes = {
     isFetching: PropTypes.bool.isRequired,
   }).isRequired,
   match: PropTypes.shape({
-    // breed: PropTypes.string.isRequired,
-    // subBreed: PropTypes.string.isRequired,
+
   }).isRequired,
   getBreedInfoActions: PropTypes.func.isRequired,
   increaseShowedImagesActions: PropTypes.func.isRequired,

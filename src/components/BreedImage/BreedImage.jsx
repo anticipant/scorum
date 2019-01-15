@@ -8,7 +8,7 @@ const BreedImage = ({ imageInfo, name }) => {
 
 BreedImage.propTypes = {
   imageInfo: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     url: PropTypes.string.isRequired,
   }).isRequired,
   name: PropTypes.string.isRequired,

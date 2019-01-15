@@ -4,6 +4,7 @@ import {
   BREEDS_LIST_IMAGES_SUCCESS,
   BREEDS_LIST_SUCCESS,
   BREEDS_LIST_FAIL,
+  IMAGE_RENDERED,
 } from '../actions/ListActions';
 
 const initialState = {
@@ -12,13 +13,14 @@ const initialState = {
   error: '',
   isFetchingList: false,
   isFetchingListImages: false,
+  areImagesShowing: false,
 };
 
 const listReducer = (state = initialState, action) => {
   switch (action.type) {
     case BREEDS_LIST_REQUEST:
       return {
-        ...state, isFetchingList: true, isFetchingListImages: true, error: '',
+        ...state, isFetchingList: true, isFetchingListImages: true, error: '', areImagesShowing: false,
       };
 
     case BREEDS_LIST_SUCCESS:
@@ -32,6 +34,9 @@ const listReducer = (state = initialState, action) => {
 
     case BREEDS_LIST_IMAGES_FAIL:
       return { ...state, isFetchingListImages: false, error: action.payload.message };
+
+    case IMAGE_RENDERED:
+      return { ...state, areImagesShowing: true };
 
     default:
       return state;

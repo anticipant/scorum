@@ -33,8 +33,10 @@ export const getBreedInfo = dogInfo => (dispatch) => {
     .then(response => response.json())
     .then((data) => {
       if (data.status === 'success') {
-        const breedImages = data.message.map(it => ({
-          id: it.slice(it.lastIndexOf('_') + 1, it.lastIndexOf('.')),
+        const breedImages = data.message.map((it, index) => ({
+          // API dogs отдает иногда одинаковые картинки
+          // id: it.slice(it.lastIndexOf('_') + 1, it.lastIndexOf('.')),
+          id: index,
           url: it,
         }));
 

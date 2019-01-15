@@ -31,13 +31,17 @@
   }
 
   &__button {
-    padding: .625rem 1rem;
+    padding: 16px 10px;
     background-color: transparent;
-    border-radius: .25rem;
-    border-color: #121526;
-    font-size: .875rem;
-    line-height: 1.43;
+    border-radius: 4px;
+    border: 1px solid #121526;
+    font-size: 14px;
+    line-height: normal;
     color: #121526;
+
+    &:hover{
+      background-color: rgba(18, 21, 38, 0.1);
+    }
   }
 
   &__button-wrapper {

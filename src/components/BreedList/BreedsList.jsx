@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getBreedsList } from '../../actions/ListActions';
+import { getBreedsList, IMAGES_TO_RENDER_ON_MAIN_PAGE, imageRendered } from '../../actions/ListActions';
 import DogsList from '../DogList/DogList';
 import BreedImage from '../BreedImage/BreedImage';
 import Preloader from '../Preloader/Preloader';
@@ -10,25 +10,15 @@ import checkImgArrAndGo from '../../help/util';
 
 
 class BreedsList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.numberOfRenderedImages = 0;
+  }
+
   componentDidMount() {
     const { getBreedsListActions } = this.props;
 
     getBreedsListActions();
-  }
-
-  componentDidUpdate() {
-    const { breedsList } = this.props;
-    const { isFetchingListImages, isFetchingList } = breedsList;
-
-    if (!isFetchingListImages || !isFetchingList) {
-      setTimeout(() => {
-        checkImgArrAndGo('BreedList__content-wrapper', 'BreedList__flex-image');
-      }, 1000);
-
-      setTimeout(() => {
-        this.showBreedListContainer();
-      }, 1300);
-    }
   }
 
   showBreedListContainer = () => {
@@ -39,23 +29,45 @@ class BreedsList extends React.Component {
     }
   };
 
+  finishImageRender = () => {
+    const { imageRenderedActions } = this.props;
+    this.numberOfRenderedImages += 1;
+
+    if (this.numberOfRenderedImages === IMAGES_TO_RENDER_ON_MAIN_PAGE) {
+      imageRenderedActions();
+    }
+  };
+
+  startImageRender = () => {
+    requestAnimationFrame(this.finishImageRender);
+  };
+
+  imageLoaded = () => {
+    requestAnimationFrame(this.startImageRender);
+  };
+
   render() {
     const { breedsList } = this.props;
-    const { isFetchingListImages, isFetchingList } = breedsList;
+    const { isFetchingListImages, isFetchingList, areImagesShowing } = breedsList;
 
+    if (areImagesShowing) {
+      checkImgArrAndGo('BreedList__content-wrapper', 'BreedList__flex-image');
+      this.showBreedListContainer();
+    }
 
     return (
       <div className="BreedList">
         <h1 className="BreedList__title">Choose your Dog!</h1>
 
-
-        <Preloader isFetching={isFetchingListImages || isFetchingList}>
+        <Preloader
+          isFetching={isFetchingListImages || isFetchingList}
+          areImagesShowing={areImagesShowing}
+        >
           <div className="BreedList__container">
             <DogsList breedsList={breedsList} />
 
-            <div className="BreedList__content-wrapper">
+            <div className="BreedList__content-wrapper" onLoad={this.imageLoaded}>
               {breedsList.breedsImages.map(it => <BreedImage key={it.id} imageInfo={it} name="BreedList__flex-image" />)}
-
             </div>
 
           </div>
@@ -71,8 +83,10 @@ BreedsList.propTypes = {
     error: PropTypes.string.isRequired,
     isFetchingList: PropTypes.bool.isRequired,
     isFetchingListImages: PropTypes.bool.isRequired,
+    areImagesShowing: PropTypes.bool.isRequired,
   }).isRequired,
   getBreedsListActions: PropTypes.func.isRequired,
+  imageRenderedActions: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = store => ({
@@ -81,6 +95,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   getBreedsListActions: () => dispatch(getBreedsList()),
+  imageRenderedActions: () => dispatch(imageRendered()),
 });
 
 
