@@ -69,19 +69,24 @@ class BreedPage extends React.Component {
 
   render() {
     const { breedPage, match } = this.props;
+    const {
+      isFetching, allImagesOfTheBreed, showedImages, error,
+    } = breedPage;
     const { breed, subBreed = '' } = match.params;
 
+    if (error !== '') {
+      throw new Error(error);
+    }
     return (
       <React.Fragment>
         <div className="BreedPage">
-          {/* сделать компонент для навигации с возможностью масштабируемости */}
           <HomeAnchor />
           <h1 className="BreedPage__title">The dog is the best friend</h1>
           <GetBreedFullName subBreed={subBreed} breed={breed} />
 
           <div className="BreedPage__container">
-            <Preloader isFetching={breedPage.isFetching}>
-              {this.getImageElements(breedPage.allImagesOfTheBreed, breedPage.showedImages)}
+            <Preloader isFetching={isFetching}>
+              {this.getImageElements(allImagesOfTheBreed, showedImages)}
             </Preloader>
           </div>
 
@@ -96,6 +101,7 @@ BreedPage.propTypes = {
   breedPage: PropTypes.shape({
     subBreed: PropTypes.string,
     breed: PropTypes.string,
+    error: PropTypes.string.isRequired,
     allImagesOfTheBreed: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
   }).isRequired,
