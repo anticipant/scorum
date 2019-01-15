@@ -47,10 +47,12 @@ class BreedsList extends React.Component {
   };
 
   render() {
-    const { breedsList } = this.props;
     const {
-      isFetchingListImages, isFetchingList, areImagesShowing, error,
-    } = breedsList;
+      breedsList,
+      breedsList: {
+        isFetchingListImages, isFetchingList, areImagesShowing, error,
+      },
+    } = this.props;
 
     if (areImagesShowing) {
       checkImgArrAndGo('BreedList__content-wrapper', 'BreedList__flex-image');

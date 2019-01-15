@@ -68,10 +68,15 @@ class BreedPage extends React.Component {
 
 
   render() {
-    const { breedPage, match } = this.props;
     const {
-      isFetching, allImagesOfTheBreed, showedImages, error,
-    } = breedPage;
+      match,
+      breedPage: {
+        isFetching, allImagesOfTheBreed, showedImages, error,
+      },
+    } = this.props;
+    // const {
+    //   isFetching, allImagesOfTheBreed, showedImages, error,
+    // } = breedPage;
     const { breed, subBreed = '' } = match.params;
 
     if (error !== '') {
