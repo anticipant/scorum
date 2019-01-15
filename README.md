@@ -1,7 +1,7 @@
 
 # Demo mode
 
-...wait
+https://anticipant.github.io/scorum/
 
 
 ## Webpack
