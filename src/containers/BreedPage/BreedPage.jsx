@@ -57,7 +57,13 @@ class BreedPage extends React.Component {
     return images.map((it, index) => {
       const { id, url } = it;
 
-      return index < showedImages ? <div className="BreedPage__image" key={id} style={{ backgroundImage: `url(${url})` }} /> : null;
+      return index < showedImages ? (
+        <div
+          className="BreedPage__image"
+          key={id}
+          style={{ backgroundImage: `url(${url})` }}
+        />
+      ) : null;
     }).concat(showedImages < images.length ? showBtn : null);
   };
 

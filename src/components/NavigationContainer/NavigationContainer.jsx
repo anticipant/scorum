@@ -2,9 +2,7 @@ import React from 'react';
 import './NavigationContainer.scss';
 import PropTypes from 'prop-types';
 
-const NavigationContainer = ({ children }) => {
-  return <div className="NavigationContainer">{children}</div>;
-};
+const NavigationContainer = ({ children }) => <div className="NavigationContainer">{children}</div>;
 
 NavigationContainer.propTypes = {
   children: PropTypes.node.isRequired,
