@@ -129,6 +129,23 @@
     margin: 0 0 10px 10px; }
     .BreedList__flex-image:nth-of-type(odd) {
       margin: 0 0 10px; }
+.NavigationItem {
+  display: inline-block;
+  padding: 6px 10px;
+  margin: 10px 10px 10px 0;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #121526;
+  line-height: normal;
+  color: #121526;
+  font-size: 14px;
+  text-decoration: none; }
+  .NavigationItem:hover {
+    background-color: rgba(18, 21, 38, 0.1); }
+.NavigationContainer {
+  display: flex;
+  padding: 6px 0;
+  background-color: transparent; }
 .BreedPage {
   width: 1200px;
   padding: 0 20px;
@@ -166,19 +183,6 @@
     width: 100%;
     margin-top: 15px;
     text-align: center; }
-.NavigationItem {
-  display: inline-block;
-  padding: 6px 10px;
-  margin: 10px 10px 10px 0;
-  background-color: transparent;
-  border-radius: 4px;
-  border: 1px solid #121526;
-  line-height: normal;
-  color: #121526;
-  font-size: 14px;
-  text-decoration: none; }
-  .NavigationItem:hover {
-    background-color: rgba(18, 21, 38, 0.1); }
 .ErrorBoundary__title {
   text-align: center;
   font-size: 25px;
