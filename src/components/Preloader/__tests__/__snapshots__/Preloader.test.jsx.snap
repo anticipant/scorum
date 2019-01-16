@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Preloader component News container initial renders properly 1`] = `
+<Fragment>
+  <p>
+    Content Loaded
+  </p>
+</Fragment>
+`;
+
+exports[`Preloader component News container initial should show that preloader render children with text "Content Loaded" 1`] = `
+<Fragment>
+  <p>
+    Content Loaded
+  </p>
+</Fragment>
+`;
+
+exports[`Preloader component when it is shown Preloader should show preloader with content (data received, images not drawn) isFetching = false, areImagesShowing = false 1`] = `
+<Fragment>
+  <div
+    className="Preloader"
+  >
+    <hr />
+    <hr />
+    <hr />
+    <hr />
+  </div>
+  <p>
+    Content Loaded
+  </p>
+</Fragment>
+`;
+
+exports[`Preloader component when it is shown Preloader should show preloader without content (no data received) isFetching = false 1`] = `
+<Fragment>
+  <div
+    className="Preloader"
+  >
+    <hr />
+    <hr />
+    <hr />
+    <hr />
+  </div>
+</Fragment>
+`;
