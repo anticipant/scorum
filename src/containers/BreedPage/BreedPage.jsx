@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getBreedInfo, increaseShowedImages } from '../../actions/PageActions';
+import Preloader from '../../components/Preloader/Preloader';
+import NavigationItem from '../../components/NavigationItem/NavigationItem';
+import NavigationContainer from '../../components/NavigationContainer/NavigationContainer';
 import './BreedPage.scss';
-import Preloader from '../Preloader/Preloader';
-import HomeAnchor from '../HomeAnchor/HomeAnchor';
 
 const GetBreedFullName = ({ breed, subBreed }) => {
   if (breed && subBreed) {
@@ -74,9 +75,6 @@ class BreedPage extends React.Component {
         isFetching, allImagesOfTheBreed, showedImages, error,
       },
     } = this.props;
-    // const {
-    //   isFetching, allImagesOfTheBreed, showedImages, error,
-    // } = breedPage;
     const { breed, subBreed = '' } = match.params;
 
     if (error !== '') {
@@ -85,7 +83,9 @@ class BreedPage extends React.Component {
     return (
       <React.Fragment>
         <div className="BreedPage">
-          <HomeAnchor />
+          <NavigationContainer>
+            <NavigationItem label="Home" />
+          </NavigationContainer>
           <h1 className="BreedPage__title">The dog is the best friend</h1>
           <GetBreedFullName subBreed={subBreed} breed={breed} />
 

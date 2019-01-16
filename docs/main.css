@@ -166,7 +166,7 @@
     width: 100%;
     margin-top: 15px;
     text-align: center; }
-.HomeAnchor {
+.NavigationItem {
   display: inline-block;
   padding: 6px 10px;
   margin: 10px 10px 10px 0;
@@ -177,7 +177,7 @@
   color: #121526;
   font-size: 14px;
   text-decoration: none; }
-  .HomeAnchor:hover {
+  .NavigationItem:hover {
     background-color: rgba(18, 21, 38, 0.1); }
 .ErrorBoundary__title {
   text-align: center;

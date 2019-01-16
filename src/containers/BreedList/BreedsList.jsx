@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getBreedsList, IMAGES_TO_RENDER_ON_MAIN_PAGE, imageRendered } from '../../actions/ListActions';
-import DogsList from '../DogList/DogList';
-import BreedImage from '../BreedImage/BreedImage';
-import Preloader from '../Preloader/Preloader';
-import './BreedList.scss';
+import DogsList from '../../components/DogList/DogList';
+import BreedImage from '../../components/BreedImage/BreedImage';
+import Preloader from '../../components/Preloader/Preloader';
 import checkImgArrAndGo from '../../help/util';
+import './BreedList.scss';
 
 
 class BreedsList extends React.Component {
