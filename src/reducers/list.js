@@ -11,6 +11,8 @@ const initialState = {
   breeds: [],
   breedsImages: [],
   error: '',
+  isLoadedList: false,
+  isLoadedListImages: false,
   isFetchingList: false,
   isFetchingListImages: false,
   areImagesShowing: false,
@@ -31,6 +33,7 @@ const listReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetchingList: false,
+        isLoadedList: true,
         breeds: action.payload,
       };
 
@@ -45,6 +48,7 @@ const listReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetchingListImages: false,
+        isLoadedListImages: true,
         breedsImages: action.payload,
       };
 

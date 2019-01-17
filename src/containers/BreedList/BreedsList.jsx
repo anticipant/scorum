@@ -16,9 +16,12 @@ class BreedsList extends React.Component {
   }
 
   componentDidMount() {
-    const { getBreedsListActions } = this.props;
+    const { getBreedsListActions, isLoadedData } = this.props;
 
-    getBreedsListActions();
+
+    if (!isLoadedData) {
+      getBreedsListActions();
+    }
   }
 
   showBreedListContainer = () => {
@@ -93,12 +96,14 @@ BreedsList.propTypes = {
     isFetchingListImages: PropTypes.bool.isRequired,
     areImagesShowing: PropTypes.bool.isRequired,
   }).isRequired,
+  isLoadedData: PropTypes.bool.isRequired,
   getBreedsListActions: PropTypes.func.isRequired,
   imageRenderedActions: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = store => ({
   breedsList: store.breedsList,
+  isLoadedData: store.breedsList.isLoadedList && store.breedsList.isLoadedListImages,
 });
 
 const mapDispatchToProps = dispatch => ({
